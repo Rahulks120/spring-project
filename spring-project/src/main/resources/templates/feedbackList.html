@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .feedback-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        .feedback-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .feedback-item p {
+            margin: 0;
+            padding: 5px 0;
+        }
+        .feedback-item hr {
+            border: 0;
+            border-top: 1px solid #ddd;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<form action="#" th:action="@{/search}" method="get">
+    <label for="topic">Search by Topic:</label><br>
+    <input type="text" id="topic" name="topic" placeholder="Enter topic to search">
+    <input type="submit" value="Search">
+</form>
+
+<div class="feedback-container">
+    <h2>Feedback List</h2>
+    <div th:each="fb : ${feedbackList}" class="feedback-item">
+        <p><strong>Name:</strong> <span th:text="${fb.employeeName}"></span></p>
+        <p><strong>Topic:</strong> <span th:text="${fb.topic}"></span></p>
+        <p><strong>Feedback:</strong> <span th:text="${fb.feedback}"></span></p>
+    </div>
+</div>
+</body>
+</html>
