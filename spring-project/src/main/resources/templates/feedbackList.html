@@ -21,19 +21,21 @@
             max-width: 800px;
             margin: auto;
         }
-        .feedback-item {
-            margin-bottom: 20px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
             padding: 10px;
+            text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        .feedback-item p {
-            margin: 0;
-            padding: 5px 0;
+        th {
+            background-color: #f2f2f2;
         }
-        .feedback-item hr {
-            border: 0;
-            border-top: 1px solid #ddd;
-            margin: 10px 0;
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
     </style>
 </head>
@@ -46,11 +48,22 @@
 
 <div class="feedback-container">
     <h2>Feedback List</h2>
-    <div th:each="fb : ${feedbackList}" class="feedback-item">
-        <p><strong>Name:</strong> <span th:text="${fb.employeeName}"></span></p>
-        <p><strong>Topic:</strong> <span th:text="${fb.topic}"></span></p>
-        <p><strong>Feedback:</strong> <span th:text="${fb.feedback}"></span></p>
-    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Topic</th>
+            <th>Feedback</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fb : ${feedbackList}">
+            <td th:text="${fb.employeeName}"></td>
+            <td th:text="${fb.topic}"></td>
+            <td th:text="${fb.feedback}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
