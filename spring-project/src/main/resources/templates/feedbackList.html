@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .feedback-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<form action="#" th:action="@{/search}" method="get">
+    <label for="topic">Search by Topic:</label><br>
+    <input type="text" id="topic" name="topic" placeholder="Enter topic to search">
+    <input type="submit" value="Search">
+</form>
+
+<div class="feedback-container">
+    <h2>Feedback List</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Topic</th>
+            <th>Feedback</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fb : ${feedbackList}">
+            <td th:text="${fb.employeeName}"></td>
+            <td th:text="${fb.topic}"></td>
+            <td th:text="${fb.feedback}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
